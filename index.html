@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILIA CIH Portal — Platform Vision</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #004372; --blue-mid: #0076BD; --blue-light: #66A4D9;
+    --blue-pale: #EBF4FB; --green: #30934C; --green-pale: #E6F5EA;
+    --white: #FFFFFF; --off-white: #F5F7FA; --ink: #0D1F2D;
+    --muted: #6B7E8F; --border: #D4DFE9;
+    --amber: #F4A623; --amber-pale: #FEF4E3;
+    --red: #DC2626; --purple: #7C3AED; --purple-pale: #F3EFFE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--ink); }
+  a { text-decoration: none; color: inherit; }
+
+  /* HEADER */
+  header {
+    background: var(--blue-deep); padding: 52px 40px 44px;
+    position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0,118,189,0.3) 0%, transparent 65%);
+    top: -250px; right: -150px; border-radius: 50%;
+  }
+  header::after {
+    content: ''; position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+    bottom: -100px; left: 80px; border-radius: 50%;
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 12px; margin-bottom: 20px; transition: color 0.15s; }
+  .back-link:hover { color: white; }
+  .badge { display: inline-block; background: rgba(124,58,237,0.25); color: #C4B5FD; font-family: 'DM Mono',monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; border: 1px solid rgba(124,58,237,0.35); margin-bottom: 18px; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,58px); color: white; line-height: 1.1; margin-bottom: 14px; }
+  header h1 em { color: #C4B5FD; font-style: italic; }
+  header p { color: rgba(255,255,255,0.6); font-size: 15px; font-weight: 300; max-width: 600px; line-height: 1.65; margin-bottom: 30px; }
+  .meta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .meta-pill { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: rgba(255,255,255,0.68); }
+
+  /* MAIN */
+  main { max-width: 1100px; margin: 0 auto; padding: 44px 24px 80px; }
+  .section-label { font-family: 'DM Mono',monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* VISION STATEMENT */
+  .vision-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 32px 36px; margin-bottom: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media(max-width:700px){ .vision-box { grid-template-columns: 1fr; } }
+  .vision-box h2 { font-family: 'DM Serif Display',serif; font-size: 26px; color: var(--ink); line-height: 1.25; margin-bottom: 14px; }
+  .vision-box h2 em { color: var(--blue-mid); font-style: italic; }
+  .vision-box p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .vision-right { display: flex; flex-direction: column; gap: 14px; }
+  .vision-stat { background: var(--off-white); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; }
+  .vs-icon { font-size: 24px; }
+  .vs-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+  .vs-value { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+  /* WORKFLOW DIAGRAM */
+  .flow-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 44px; }
+  .flow-header { background: linear-gradient(135deg, var(--blue-deep), var(--purple)); padding: 20px 28px; }
+  .flow-header h3 { color: white; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .flow-header p { color: rgba(255,255,255,0.6); font-size: 12.5px; }
+  .flow-body { padding: 36px 28px; }
+
+  /* MAIN FLOW */
+  .flow-main { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; margin-bottom: 36px; }
+  .flow-node {
+    background: var(--white); border: 2px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; text-align: center; min-width: 130px;
+    transition: all 0.2s; position: relative;
+  }
+  .flow-node:hover { border-color: var(--blue-mid); box-shadow: 0 4px 16px rgba(0,118,189,0.12); transform: translateY(-2px); }
+  .flow-node.primary { border-color: var(--blue-mid); background: var(--blue-pale); }
+  .flow-node.engine { border-color: var(--purple); background: var(--purple-pale); }
+  .flow-icon { font-size: 28px; margin-bottom: 8px; }
+  .flow-title { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 3px; }
+  .flow-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .flow-arrow { font-size: 22px; color: var(--border); padding: 0 8px; flex-shrink: 0; }
+
+  /* SEAT TYPES */
+  .seats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-bottom: 36px; }
+  .seat-card {
+    background: var(--off-white); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; text-align: center; position: relative; overflow: hidden;
+    transition: all 0.15s;
+  }
+  .seat-card:hover { background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .seat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .sc-ops::before { background: var(--blue-mid); }
+  .sc-support::before { background: var(--green); }
+  .sc-sales::before { background: var(--amber); }
+  .sc-marketing::before { background: #E65100; }
+  .sc-dev::before { background: var(--purple); }
+  .sc-admin::before { background: var(--ink); }
+  .seat-icon { font-size: 26px; margin-bottom: 8px; }
+  .seat-name { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+  .seat-role { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .seat-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+
+  /* HOW IT WORKS STEPS */
+  .steps-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 44px; }
+  .step { background: var(--white); padding: 22px 18px; border-right: 1px solid var(--border); position: relative; }
+  .step:last-child { border-right: none; }
+  .step-num { font-family: 'DM Mono',monospace; font-size: 28px; color: var(--border); margin-bottom: 10px; }
+  .step-title { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 6px; }
+  .step-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .step-badge { position: absolute; top: 14px; right: 14px; font-size: 9.5px; padding: 2px 7px; border-radius: 10px; font-weight: 700; }
+  .sb-now { background: var(--blue-pale); color: var(--blue-mid); }
+  .sb-next { background: var(--purple-pale); color: var(--purple); }
+  .sb-future { background: var(--off-white); color: var(--muted); border: 1px solid var(--border); }
+
+  /* DASHBOARD MOCKUP */
+  .mockup-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 44px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .mockup-sidebar { background: var(--blue-deep); padding: 20px 16px; }
+  .mockup-logo { color: white; font-weight: 800; font-size: 14px; margin-bottom: 4px; }
+  .mockup-logo span { color: #C4B5FD; }
+  .mockup-user { color: rgba(255,255,255,0.5); font-size: 11px; margin-bottom: 20px; }
+  .mockup-seat-badge { background: rgba(124,58,237,0.25); color: #C4B5FD; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-bottom: 20px; display: inline-block; border: 1px solid rgba(124,58,237,0.3); }
+  .mockup-nav-item { padding: 8px 10px; border-radius: 6px; color: rgba(255,255,255,0.6); font-size: 12px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.15s; margin-bottom: 3px; }
+  .mockup-nav-item.active { background: rgba(255,255,255,0.12); color: white; }
+  .mockup-nav-item:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
+  .mockup-main { background: var(--off-white); display: flex; flex-direction: column; }
+  .mockup-topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .mockup-topbar-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .mockup-topbar-right { display: flex; gap: 8px; }
+  .mockup-chip { font-size: 10.5px; padding: 3px 10px; border-radius: 10px; background: var(--green-pale); color: var(--green); font-weight: 600; }
+  .mockup-chat { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .chat-msg { max-width: 80%; }
+  .chat-msg.user { align-self: flex-end; }
+  .chat-bubble { padding: 10px 14px; border-radius: 10px; font-size: 12.5px; line-height: 1.5; }
+  .chat-msg.user .chat-bubble { background: var(--blue-mid); color: white; border-radius: 10px 10px 2px 10px; }
+  .chat-msg.ai .chat-bubble { background: var(--white); border: 1px solid var(--border); color: var(--ink); border-radius: 10px 10px 10px 2px; }
+  .chat-label { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+  .mockup-input { border-top: 1px solid var(--border); padding: 12px 16px; background: var(--white); display: flex; gap: 10px; align-items: center; }
+  .mockup-input-field { flex: 1; background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; color: var(--muted); }
+  .mockup-send { background: var(--blue-mid); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; font-weight: 600; cursor: pointer; }
+
+  /* TECH STACK */
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; margin-bottom: 44px; }
+  .tech-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .tech-layer { font-family: 'DM Mono',monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .tech-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+  .tech-desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
+  .tech-cost { font-size: 11px; font-weight: 600; color: var(--green); margin-top: 8px; }
+
+  footer { text-align: center; padding: 24px; font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--border); }
+  footer a { color: var(--blue-mid); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="https://niwcompanies-ilia-central-intelligence.github.io/ilia-hub-team/" class="back-link">← Back to ILIA Central Intelligence Hub</a>
+    <div class="badge">Platform Vision — In Development</div>
+    <h1>ILIA <em>CIH Portal</em></h1>
+    <p>A branded AI operating platform for NIW Companies — where every employee logs in to their role-configured intelligence workspace, powered by Claude and connected to the full CIH ecosystem.</p>
+    <div class="meta-row">
+      <div class="meta-pill">🏗️ Phase 1 — Planning</div>
+      <div class="meta-pill">🤖 Powered by Claude API</div>
+      <div class="meta-pill">👥 Multi-seat · Role-configured</div>
+      <div class="meta-pill">🔗 Connected to CIH</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- VISION -->
+  <div class="section-label" style="margin-top:4px;">The Vision</div>
+  <div class="vision-box">
+    <div>
+      <h2>One platform. Every role. <em>One intelligence.</em></h2>
+      <p>The ILIA CIH Portal is a custom-branded AI workspace where NIW employees don't use Claude — they use <strong>NIW's platform</strong>, built on Claude. Each person logs in, gets their role-configured dashboard and AI assistant, and works entirely inside the NIW system.</p>
+      <br>
+      <p>Operations staff manage tickets and SOPs. Support staff answer client questions. Sales staff reference Kai-Zen strategy. Developers work with the codebase. All from the same platform. All connected to the same CIH intelligence layer. All with a login they own.</p>
+    </div>
+    <div class="vision-right">
+      <div class="vision-stat">
+        <div class="vs-icon">🪑</div>
+        <div>
+          <div class="vs-label">Seat Types Planned</div>
+          <div class="vs-value">Operations · Support · Sales · Marketing · Dev · Admin</div>
+        </div>
+      </div>
+      <div class="vision-stat">
+        <div class="vs-icon">🧠</div>
+        <div>
+          <div class="vs-label">Intelligence Engine</div>
+          <div class="vs-value">Claude API + CIH Context + Role System Prompts</div>
+        </div>
+      </div>
+      <div class="vision-stat">
+        <div class="vs-icon">💰</div>
+        <div>
+          <div class="vs-label">Estimated Cost at Scale</div>
+          <div class="vs-value">~$50–200/month (usage-based API)</div>
+        </div>
+      </div>
+      <div class="vision-stat">
+        <div class="vs-icon">⏱️</div>
+        <div>
+          <div class="vs-label">Phase 1 Build Time</div>
+          <div class="vs-value">2–4 weeks · Browser app first</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS FLOW -->
+  <div class="section-label">How It Works — End to End</div>
+  <div class="flow-wrap">
+    <div class="flow-header">
+      <h3>ILIA CIH Portal — System Flow</h3>
+      <p>From employee invite to role-configured AI workspace in minutes</p>
+    </div>
+    <div class="flow-body">
+
+      <!-- Top flow -->
+      <div class="flow-main">
+        <div class="flow-node primary">
+          <div class="flow-icon">👤</div>
+          <div class="flow-title">Admin Creates Seat</div>
+          <div class="flow-sub">Selects seat type, sends invite email</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon">📧</div>
+          <div class="flow-title">Employee Invited</div>
+          <div class="flow-sub">Sets password, creates account</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon">🔐</div>
+          <div class="flow-title">Logs In</div>
+          <div class="flow-sub">Secure login — NIW branded</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon">🪑</div>
+          <div class="flow-title">Seat Detected</div>
+          <div class="flow-sub">System loads role config</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node primary">
+          <div class="flow-icon">🖥️</div>
+          <div class="flow-title">Their Dashboard</div>
+          <div class="flow-sub">Personalized for their role</div>
+        </div>
+      </div>
+
+      <!-- Intelligence layer -->
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:var(--purple-pale);border:1px solid rgba(124,58,237,0.2);border-radius:8px;padding:10px 20px;">
+          <span style="font-size:16px;">🧠</span>
+          <span style="font-size:12.5px;font-weight:700;color:var(--purple);">Every chat goes: Dashboard → NIW Backend → Claude API (with role system prompt + CIH context) → Response</span>
+        </div>
+      </div>
+
+      <!-- Seat types -->
+      <div class="section-label" style="margin-top:8px;">Seat Types — Each Gets a Configured Dashboard</div>
+      <div class="seats-grid">
+        <div class="seat-card sc-ops">
+          <div class="seat-icon">📊</div>
+          <div class="seat-name">Operations</div>
+          <div class="seat-role">Ops team, PMs, admin</div>
+          <span class="seat-tag" style="background:var(--blue-pale);color:var(--blue-mid);">JIRA · Confluence · SOPs</span>
+        </div>
+        <div class="seat-card sc-support">
+          <div class="seat-icon">🎧</div>
+          <div class="seat-name">Support</div>
+          <div class="seat-role">Client-facing staff</div>
+          <span class="seat-tag" style="background:var(--green-pale);color:var(--green);">Client Flows · Policy Status</span>
+        </div>
+        <div class="seat-card sc-sales">
+          <div class="seat-icon">📈</div>
+          <div class="seat-name">Sales</div>
+          <div class="seat-role">Sales team, agents</div>
+          <span class="seat-tag" style="background:var(--amber-pale);color:#9B5500;">Kai-Zen · IUL · Carriers</span>
+        </div>
+        <div class="seat-card sc-marketing">
+          <div class="seat-icon">📣</div>
+          <div class="seat-name">Marketing</div>
+          <div class="seat-role">Marketing, content</div>
+          <span class="seat-tag" style="background:#FFF3E0;color:#C05000;">Brand · Assets · Copy</span>
+        </div>
+        <div class="seat-card sc-dev">
+          <div class="seat-icon">💻</div>
+          <div class="seat-name">Dev / PM</div>
+          <div class="seat-role">Developers, PMs</div>
+          <span class="seat-tag" style="background:var(--purple-pale);color:var(--purple);">GitHub · Code · JIRA</span>
+        </div>
+        <div class="seat-card sc-admin">
+          <div class="seat-icon">🔑</div>
+          <div class="seat-name">Admin</div>
+          <div class="seat-role">Platform administrators</div>
+          <span class="seat-tag" style="background:#F0F0F0;color:var(--ink);">All Access · User Mgmt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD MOCKUP -->
+  <div class="section-label">What It Looks Like — Operations Seat Example</div>
+  <div class="mockup-grid">
+    <div class="mockup-sidebar">
+      <div class="mockup-logo">ILIA <span>CIH</span> Portal</div>
+      <div class="mockup-user">marissa.castillo@simplicity...</div>
+      <div class="mockup-seat-badge">⚙️ Operations Seat</div>
+      <div class="mockup-nav-item active">💬 AI Assistant</div>
+      <div class="mockup-nav-item">📌 My JIRA Queue</div>
+      <div class="mockup-nav-item">📋 Active SOPs</div>
+      <div class="mockup-nav-item">📊 Project Status</div>
+      <div class="mockup-nav-item">📘 Confluence</div>
+      <div class="mockup-nav-item" style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;">⚙️ Settings</div>
+    </div>
+    <div class="mockup-main">
+      <div class="mockup-topbar">
+        <div class="mockup-topbar-title">AI Assistant — Operations</div>
+        <div class="mockup-topbar-right">
+          <span class="mockup-chip">✓ CIH Connected</span>
+          <span class="mockup-chip" style="background:var(--blue-pale);color:var(--blue-mid);">✓ JIRA Live</span>
+        </div>
+      </div>
+      <div class="mockup-chat">
+        <div class="chat-msg user">
+          <div class="chat-label" style="text-align:right;">Marissa</div>
+          <div class="chat-bubble">What's the current status on the DBR project and are there any open tickets assigned to me?</div>
+        </div>
+        <div class="chat-msg ai">
+          <div class="chat-label">ILIA Operations Assistant</div>
+          <div class="chat-bubble">The DBR MVP is currently <strong>blocked</strong> on two items — data readiness (B1) and DocuSign implementation (B2, awaiting Chris Lane). You have <strong>3 open JIRA tickets</strong> assigned to you: NIWD-1735 (data quality, Urgent), NIWD-1742 (DocuSign envelope build), and NIWD-1023. Want me to pull up the details on any of these or draft a status update?</div>
+        </div>
+        <div class="chat-msg user">
+          <div class="chat-bubble">Draft a status update for the team on DBR</div>
+        </div>
+      </div>
+      <div class="mockup-input">
+        <div class="mockup-input-field">Type a message...</div>
+        <button class="mockup-send">Send →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILD PHASES -->
+  <div class="section-label">Build Phases</div>
+  <div class="steps-row">
+    <div class="step">
+      <span class="step-badge sb-now">Now — Planning</span>
+      <div class="step-num">01</div>
+      <div class="step-title">CIH Foundation</div>
+      <div class="step-desc">Complete GitHub mirror, Drive structure, and full CIH intelligence layer. This is the data backbone the portal runs on.</div>
+    </div>
+    <div class="step">
+      <span class="step-badge sb-next">Phase 1</span>
+      <div class="step-num">02</div>
+      <div class="step-title">Browser App</div>
+      <div class="step-desc">NIW-branded chat interface with login, seat type system, and Operations + Support seats first. Runs in any browser, no install.</div>
+    </div>
+    <div class="step">
+      <span class="step-badge sb-next">Phase 2</span>
+      <div class="step-num">03</div>
+      <div class="step-title">Dashboard Panels</div>
+      <div class="step-desc">Role-specific panels per seat — JIRA queue for Ops, client lookup for Support, asset library for Marketing.</div>
+    </div>
+    <div class="step">
+      <span class="step-badge sb-future">Phase 3</span>
+      <div class="step-num">04</div>
+      <div class="step-title">Desktop App</div>
+      <div class="step-desc">Package as a downloadable Mac/Windows app. Enables local ILIA integration and offline capability for some features.</div>
+    </div>
+    <div class="step">
+      <span class="step-badge sb-future">Phase 4</span>
+      <div class="step-num">05</div>
+      <div class="step-title">Admin Console</div>
+      <div class="step-desc">Seat management, user invites, usage tracking, access control. Full platform governance for NIW admins.</div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="section-label">Technology Stack</div>
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-layer">Frontend</div>
+      <div class="tech-name">React / HTML App</div>
+      <div class="tech-desc">NIW-branded interface. Chat UI, dashboard panels, role switching. Hosted on Cloudflare Pages.</div>
+      <div class="tech-cost">Free hosting</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-layer">Authentication</div>
+      <div class="tech-name">Clerk</div>
+      <div class="tech-desc">Login, invite flow, password management, seat type assignment. Handles all auth complexity.</div>
+      <div class="tech-cost">Free up to 10K users</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-layer">Backend / API</div>
+      <div class="tech-name">Cloudflare Workers</div>
+      <div class="tech-desc">Secure relay between frontend and Claude API. Holds system prompts and CIH context server-side. Token never exposed.</div>
+      <div class="tech-cost">Free tier · Already set up</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-layer">Intelligence Engine</div>
+      <div class="tech-name">Claude API</div>
+      <div class="tech-desc">claude-sonnet-4 powers every chat. Role-specific system prompts configure behavior per seat type.</div>
+      <div class="tech-cost">~$50–200/month at scale</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-layer">Data / Context</div>
+      <div class="tech-name">ILIA CIH Layer</div>
+      <div class="tech-desc">Google Drive docs, GitHub codebase, JIRA, Confluence — all fed into Claude context based on seat type permissions.</div>
+      <div class="tech-cost">Already being built</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-layer">Desktop (Phase 3)</div>
+      <div class="tech-name">Electron / Tauri</div>
+      <div class="tech-desc">Wraps the browser app in a downloadable .exe or .dmg. Enables local file access and ILIA local dev integration.</div>
+      <div class="tech-cost">Free + open source</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  ILIA CIH Portal — Platform Vision · NIW Companies / Simplicity Group ·
+  <a href="https://niwcompanies-ilia-central-intelligence.github.io/ilia-hub-team/">CIH Hub</a> ·
+  <a href="https://niwcompanies-ilia-central-intelligence.github.io/ilia-project-board/">Project Board</a>
+</footer>
+
+</body>
+</html>
