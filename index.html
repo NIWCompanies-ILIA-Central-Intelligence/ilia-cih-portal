@@ -357,6 +357,242 @@
     </div>
   </div>
 
+
+  <!-- PORTAL DISCOVERY -->
+  <div class="section-label" style="margin-top:8px;">Portal Discovery — Understanding Each Seat Type</div>
+
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:44px;">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#1a2f4a 0%,var(--blue-deep) 100%);padding:20px 28px;">
+      <div style="color:white;font-weight:700;font-size:15px;margin-bottom:4px;">Discovery Calls — Before We Build</div>
+      <div style="color:rgba(255,255,255,0.55);font-size:12.5px;">One 30-45 min session per seat type to scope exactly what each user needs. Click any seat to see what we need to discover.</div>
+    </div>
+
+    <!-- Seat Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-bottom:1px solid var(--border);">
+
+      <!-- Support -->
+      <div class="discovery-card" onclick="openDiscovery('support')" style="padding:20px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">🎧</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Support</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">Screenshot diagnosis, policy lookup, escalation paths, scripted client responses.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:var(--green-pale);color:var(--green);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Olivia Frasher</span>
+          <span style="background:var(--off-white);color:var(--muted);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Discovery Needed</span>
+        </div>
+      </div>
+
+      <!-- Operations -->
+      <div class="discovery-card" onclick="openDiscovery('operations')" style="padding:20px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">📊</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Operations</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">JIRA queue, SOPs, DBR workflow, project status, approvals and reporting.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:var(--blue-pale);color:var(--blue-mid);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Marissa Castillo</span>
+          <span style="background:var(--off-white);color:var(--muted);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Discovery Needed</span>
+        </div>
+      </div>
+
+      <!-- Sales -->
+      <div class="discovery-card" onclick="openDiscovery('sales')" style="padding:20px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">📈</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Sales</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">Carrier quick-ref, Kai-Zen Q&A, field availability, agent pipeline, lead management.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:var(--amber-pale);color:#9B5500;font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Travis Fratini</span>
+          <span style="background:var(--off-white);color:var(--muted);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Discovery Needed</span>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="discovery-card" onclick="openDiscovery('marketing')" style="padding:20px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">📣</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Marketing</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">Strapi CMS, landing pages, brand assets, campaign content, approval workflows.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:#FFF3E0;color:#C05000;font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Rahim</span>
+          <span style="background:var(--off-white);color:var(--muted);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Discovery Needed</span>
+        </div>
+      </div>
+
+      <!-- Dev / PM -->
+      <div class="discovery-card" onclick="openDiscovery('devpm')" style="padding:20px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">💻</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Dev / PM</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">Full codebase access, prototype creation, JIRA backlog, GitHub workflow, local studio.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:var(--purple-pale);color:var(--purple);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Kyle + Mohit</span>
+          <span style="background:var(--off-white);color:var(--muted);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Discovery Needed</span>
+        </div>
+      </div>
+
+      <!-- Admin -->
+      <div class="discovery-card" onclick="openDiscovery('admin')" style="padding:20px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='var(--off-white)'" onmouseout="this.style.background='white'">
+        <div style="font-size:26px;margin-bottom:8px;">🔑</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:4px;">Admin</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;">Seat management, user invites, connector config, audit logs, platform governance.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span style="background:var(--off-white);color:var(--ink);font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;border:1px solid var(--border);">Jamin Austin</span>
+          <span style="background:var(--green-pale);color:var(--green);font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px;">Owner</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom note -->
+    <div style="padding:14px 28px;background:var(--off-white);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <div style="font-size:12px;color:var(--muted);">Each discovery call is 30-45 min · Click any seat above to see full discovery questions</div>
+      <div style="font-size:11px;font-weight:600;color:var(--blue-mid);">6 seats · 6 discovery calls · Phase 2 scope defined</div>
+    </div>
+  </div>
+
+  <!-- DISCOVERY MODAL -->
+  <div id="discoveryModal" style="display:none;position:fixed;inset:0;background:rgba(0,20,40,0.72);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:white;border-radius:14px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.25);">
+      <div style="padding:22px 26px 16px;border-bottom:1px solid #D4DFE9;display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;background:white;z-index:1;">
+        <div>
+          <div id="disc-badge" style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;"></div>
+          <div id="disc-title" style="font-family:'DM Serif Display',serif;font-size:22px;color:#0D1F2D;line-height:1.2;"></div>
+          <div id="disc-contact" style="font-size:12px;color:#6B7E8F;margin-top:4px;"></div>
+        </div>
+        <button onclick="closeDiscovery()" style="font-size:22px;color:#6B7E8F;background:none;border:none;cursor:pointer;padding:2px 6px;flex-shrink:0;">&times;</button>
+      </div>
+      <div style="padding:22px 26px 28px;">
+        <div id="disc-capabilities" style="margin-bottom:20px;"></div>
+        <div id="disc-questions"></div>
+        <div id="disc-escalation" style="display:none;margin-top:16px;"></div>
+        <div id="disc-compliance" style="display:none;margin-top:16px;"></div>
+        <div id="disc-data" style="display:none;margin-top:16px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  var DISCOVERY = {
+    support: {
+      title: "Support Seat Discovery",
+      icon: "🎧",
+      badge: "Discovery Call — Olivia Frasher",
+      badgeStyle: "background:#E6F5EA;color:#30934C;",
+      contact: "30-45 min call with Olivia Frasher · Client-facing support team",
+      caps: ["Screenshot upload → instant ILIA screen identification and diagnosis","Policy lookup → factual status, workflow stage, next steps","CSV and policy data explanation — educational, not advisory","Error message diagnosis from any ILIA screen","Scripted client responses based on actual workflow state"],
+      questions: [
+        ["Escalation Paths", ["What are the current escalation tiers? (L1 → L2 → Agent → Admin?)","What triggers an escalation vs handled at support level?","Can Claude draft the escalation handoff note automatically?","Who does support escalate to for compliance vs technical vs agent questions?","Is there a ticketing system for escalations or is it email/phone?"]],
+        ["Compliance Guardrails", ["What can support tell a client about CSV and policy performance?","What is the approved language for redirecting to an agent?","Recording and logging requirements for support interactions?","What topics are strictly off-limits for support to answer?"]],
+        ["Data Access", ["Which policy fields can support see vs agent vs admin?","Should sensitive financial data require a confirmation step?","Role-based data masking requirements?","Can support initiate any actions in ILIA or read-only?"]],
+        ["Daily Workflow", ["What does a typical support call look like start to finish?","What are the top 5 questions clients ask most often?","What screens do clients get stuck on most?","What information does support currently have to look up manually?"]]
+      ]
+    },
+    operations: {
+      title: "Operations Seat Discovery",
+      icon: "📊",
+      badge: "Discovery Call — Marissa Castillo",
+      badgeStyle: "background:#EBF4FB;color:#0076BD;",
+      contact: "30-45 min call with Marissa Castillo · Operations team",
+      caps: ["JIRA ticket queue management and triage","SOP lookup and generation","DBR workflow tracking and management","Project status visibility across all active initiatives","Approval routing and escalation management"],
+      questions: [
+        ["Daily Operations", ["What does a typical ops day look like — most repeated tasks?","What decisions does ops make vs escalate to management?","What data do you need that you currently can't get easily?","What takes the most time that could be automated?"]],
+        ["DBR Workflow", ["Walk me through your current DBR review queue process","What does the review checklist look like today?","What information do you need to approve or reject a DBR notice?","What happens after you approve — what's the next step?"]],
+        ["Approvals & Reporting", ["What requires sign-off and from whom?","What do you report on and to whom and how often?","What format do status updates typically take?","What escalation paths exist for blocked items?"]],
+        ["JIRA Integration", ["How do you currently use JIRA day to day?","What would make ticket management faster?","What fields matter most when triaging tickets?"]]
+      ]
+    },
+    sales: {
+      title: "Sales Seat Discovery",
+      icon: "📈",
+      badge: "Discovery Call — Travis Fratini",
+      badgeStyle: "background:#FEF4E3;color:#9B5500;",
+      contact: "30-45 min call with Travis Fratini · VP Sales, West Region",
+      caps: ["Carrier quick-reference by state and strategy","Kai-Zen and IUL product Q&A","Field availability reports by carrier","Agent pipeline visibility","Lead management support"],
+      questions: [
+        ["Sales Intelligence Needs", ["What questions do agents ask sales most frequently?","What carrier/product comparisons are needed most?","What compliance language is required in sales conversations?","What information do you look up most often during a sales call?"]],
+        ["Agent Support", ["What does the agent onboarding process look like?","What do new agents struggle with most?","What resources do agents need that they currently can't find easily?","How do you currently handle agent questions about carrier eligibility by state?"]],
+        ["Pipeline & Leads", ["What does lead management look like today?","What information does sales need on a lead before engaging?","Commission and override visibility — what can sales currently see?","What reporting does sales need on a weekly/monthly basis?"]]
+      ]
+    },
+    marketing: {
+      title: "Marketing Seat Discovery",
+      icon: "📣",
+      badge: "Discovery Call — Rahim",
+      badgeStyle: "background:#FFF3E0;color:#C05000;",
+      contact: "30-45 min call with Rahim · Marketing, Shared Drive owner",
+      caps: ["Strapi CMS landing page editing and publishing","Agent invitation page management across 21 carrier/strategy configs","Brand asset access and management","Campaign content creation","New landing page creation for new carriers/strategies"],
+      questions: [
+        ["Strapi CMS Workflow", ["What is the current process for updating a landing page today?","Who approves content changes before publishing?","How often do landing pages need to be updated?","What's the most painful part of the current process?"]],
+        ["Asset Management", ["How are new marketing assets added and organized today?","What assets does the team request most frequently?","What's the review/approval process for new creative?","How are assets shared with agents currently?"]],
+        ["Campaign & Content", ["What content types does marketing produce most — email, social, landing pages?","Who creates copy vs who approves it?","What carrier/strategy combinations need the most content attention?","Video workflow — how are new videos added to agent links?"]]
+      ]
+    },
+    devpm: {
+      title: "Dev / PM Seat Discovery",
+      icon: "💻",
+      badge: "Discovery Call — Kyle Simmons + Mohit",
+      badgeStyle: "background:#F3EFFE;color:#7C3AED;",
+      contact: "30-45 min call with Kyle Simmons + Mohit · Dev + Design",
+      caps: ["Full ILIA codebase read access via GitHub mirror","Prototype creation and deployment to NIW GitHub Pages","JIRA backlog and sprint management","GitHub PR workflow","ILIA Local Studio — build changes live on personal machine"],
+      questions: [
+        ["Dev Workflow", ["What does Mohit's current workflow look like for receiving requirements?","How are bugs reported and prioritized today?","What's the biggest bottleneck in the dev → QA → deploy pipeline?","What kind of requirements documentation works best for the dev team?"]],
+        ["PM + Prototype Workflow", ["What does Kyle's current design-to-prototype process look like?","What tools does Kyle use today for mockups and prototypes?","How does prototype feedback currently get captured and actioned?","What would a perfect PM-to-dev handoff look like?"]],
+        ["CIH Local Studio", ["What does the local dev environment setup look like currently?","What are the IT blockers for getting Node.js approved?","What would you build first if you had ILIA running locally with Claude?"]]
+      ]
+    },
+    admin: {
+      title: "Admin Seat Discovery",
+      icon: "🔑",
+      badge: "Owner — Jamin Austin",
+      badgeStyle: "background:#F0F0F0;color:#0D1F2D;",
+      contact: "Jamin Austin · Product Manager, NIW Companies",
+      caps: ["Full platform access across all seat types","User management — create, invite, assign seat types","Connector management — connect and configure all CIH integrations","Usage tracking and platform analytics","Audit logs and compliance oversight"],
+      questions: [
+        ["Platform Governance", ["Who manages ILIA user roles today and what's that process?","What admin actions currently require developer involvement?","What audit and compliance logging is required?","Multi-account management — IMO-level vs NIW-level admin needs?"]],
+        ["Seat Management", ["How should seat creation and invitation work for new hires?","What approval process should exist before a new seat is activated?","Should seat types be configurable or fixed?","What happens when someone leaves — seat deactivation process?"]],
+        ["CIH Platform", ["What metrics matter most for measuring CIH success?","Who needs visibility into platform usage?","What's the rollout sequence — which seats go live first?"]]
+      ]
+    }
+  };
+
+  window.openDiscovery = function(id) {
+    var d = DISCOVERY[id];
+    if (!d) return;
+    document.getElementById("disc-title").textContent = d.title;
+    document.getElementById("disc-badge").innerHTML = d.icon + " " + d.badge;
+    document.getElementById("disc-badge").setAttribute("style", d.badgeStyle + "font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;display:inline-block;margin-bottom:8px;");
+    document.getElementById("disc-contact").textContent = d.contact;
+
+    // Capabilities
+    document.getElementById("disc-capabilities").innerHTML =
+      "<p style='font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7E8F;margin-bottom:8px;'>Capabilities Identified</p>" +
+      "<ul style='list-style:none;margin-bottom:4px;'>" +
+      d.caps.map(function(c){ return "<li style='padding:5px 0;border-bottom:1px solid #D4DFE9;font-size:12.5px;color:#0D1F2D;'>✓ " + c + "</li>"; }).join("") +
+      "</ul>";
+
+    // Discovery questions by category
+    var qHtml = "<p style='font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7E8F;margin:16px 0 10px;'>Discovery Questions</p>";
+    d.questions.forEach(function(section) {
+      qHtml += "<div style='margin-bottom:14px;'>";
+      qHtml += "<div style='font-weight:700;font-size:12.5px;color:#0D1F2D;margin-bottom:6px;background:#F5F7FA;padding:6px 10px;border-radius:6px;border-left:3px solid #0076BD;'>" + section[0] + "</div>";
+      qHtml += "<ul style='list-style:none;padding-left:4px;'>";
+      section[1].forEach(function(q){
+        qHtml += "<li style='padding:4px 0;font-size:12px;color:#6B7E8F;border-bottom:1px solid #F5F7FA;'>→ " + q + "</li>";
+      });
+      qHtml += "</ul></div>";
+    });
+    document.getElementById("disc-questions").innerHTML = qHtml;
+
+    document.getElementById("discoveryModal").style.display = "flex";
+  };
+
+  window.closeDiscovery = function() {
+    document.getElementById("discoveryModal").style.display = "none";
+  };
+
+  document.addEventListener("click", function(e) {
+    if (e.target.id === "discoveryModal") closeDiscovery();
+  });
+  </script>
+
+
   <!-- BUILD PHASES -->
   <div class="section-label">Build Phases</div>
   <div class="steps-row">
